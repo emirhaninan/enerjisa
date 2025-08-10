@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AYEDAS & Enerjisa - Grid Voltage Monitor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div id="app-container">
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-container">
+                        <img src="enerjisa.jpg" alt="Enerjisa Logo" class="enerjisa-logo" onerror="this.style.display='none'">
+                    </div>
+                    <div class="title-section">
+                        <h1>AYEDAS & Enerjisa</h1>
+                        <p class="subtitle">Real-time power grid monitoring system</p>
+                    </div>
+                </div>
+                <div id="status">
+                    <div class="status-light" id="status-light"></div>
+                    <span id="status-text">System Online</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="chart-container">
+                <canvas id="voltage-chart"></canvas>
+                <div class="chart-overlay">
+                    <div class="voltage-display">
+                        <span id="current-voltage">220</span><span class="unit">V</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <div class="info-card">
+                    <h3>System Status</h3>
+                    <p id="system-status">Operational</p>
+                </div>
+                <div class="info-card">
+                    <h3>Last Update</h3>
+                    <p id="last-update">Just now</p>
+                </div>
+                <div class="info-card">
+                    <h3>Telegram Status</h3>
+                    <p id="telegram-status">Checking...</p>
+                </div>
+                <div class="info-card">
+                    <h3>Spike Count</h3>
+                    <p id="spike-count">0</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Spike Alert Modal -->
+    <div id="spike-alert" class="spike-alert hidden">
+        <div class="alert-content">
+            <div class="alert-icon">⚡</div>
+            <div class="alert-text">
+                <h2>VOLTAGE SPIKE DETECTED!</h2>
+                <p>Critical voltage spike detected in the grid. Please turn off equipment in the affected area immediately.</p>
+            </div>
+            <button class="alert-dismiss" onclick="dismissAlert()">×</button>
+        </div>
+    </div>
+
+    <!-- Telegram Notification -->
+    <div id="telegram-notification" class="telegram-notification hidden">
+        <div class="notification-content">
+            <div class="notification-icon">📱</div>
+            <div class="notification-text">
+                <h3>Telegram Alert Sent!</h3>
+                <p>Notification delivered to monitoring team</p>
+            </div>
+            <div class="notification-progress"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 
